@@ -32,6 +32,9 @@ git clone repo_url
 ```bash
 git checkout -b "branch_name"
 ```
+> **Note:** 
+> - You should create a branch analysis feature
+> - Branch Naming Convention: "Yourname/feature" separate by hypen " - "
 - Download the dependencies
 ```bash
 pip install -r requirements.txt

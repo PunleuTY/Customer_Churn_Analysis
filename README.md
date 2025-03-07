@@ -4,22 +4,24 @@
 ```plaintext
 Customer_Churn_Analysis/
 ├── data/
-│   └── data.csv
-├── analysis/
-│   ├── age_analysis.py
-│   ├── gender_analysis.py
-│   ├── tenure_analysis.py
-│   ├── usage_frequency_analysis.py
-│   ├── support_call_analysis.py
-│   ├── payment_delay_analysis.py
-│   ├── subscription_contract_analysis.py
-│   ├── total_spend_analysis.py
-│   ├── last_interaction_analysis.py
-│   ├── churn_analysis.py
-│   └── correlation_analysis.py
-├── requirements.txt
-├── main.ipynb
-└── README.md
+│   └── data_500_rec.csv                   # Dataset 500 records
+├── feature_analysis/
+│   ├── base_analysis.py                   # Feature Analysis Abstract Base Class
+│   ├── age_analysis.py                    # Age Analysis Feature
+│   ├── gender_analysis.py                 # Gender Analysis Feature
+│   ├── tenure_analysis.py                 # Tenure Analysis Feature
+│   ├── usage_frequency_analysis.py        # Usage Frequency Analysis Feature
+│   ├── support_call_analysis.py           # Support Call Analysis Feature
+│   ├── payment_delay_analysis.py          # Payment Delay Analysis Feature
+│   ├── subscription_analysis.py           # Subscription Analysis Feature
+│   ├── contract_analysis.py               # Contract Analysis Feature 
+│   ├── total_spend_analysis.py            # Total Spend Analysis Feature
+│   ├── last_interaction_analysis.py       # Last Interaction Analysis Feature
+│   ├── churn_analysis.py                  # Churn Analysis Feature
+│   └── correlation_analysis.py            # Overall Correlation Analysis Feature
+├── requirements.txt                       # Project Dependencies
+├── main.ipynb                             # Main Python Notebook to run Analysis Features
+└── README.md                              # Project Guide
 ```
 
 ## Getting Started

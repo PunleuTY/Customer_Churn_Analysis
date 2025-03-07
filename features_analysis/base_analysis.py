@@ -11,7 +11,7 @@ perform_analysis() method.
 import pandas as pd
 from abc import ABC, abstractmethod
 
-class BaseAnalysis:
+class BaseAnalysis(ABC):
     def __init__(self, data_path):
         self.data_path = data_path
     
@@ -19,12 +19,12 @@ class BaseAnalysis:
         try:
             df = pd.read_csv(self.data_path)
         except FileNotFoundError:
-            print("Dataset not found.")
+            raise FileNotFoundError("Dataset not found.")
+            return
         else:
             return df
     
     @abstractmethod
     def perform_analysis(self):
-        # Load Dataset and store in df
-        df = self.load_data()
-        # Implement Here
+        # Don't forget to call load_data() method
+        pass

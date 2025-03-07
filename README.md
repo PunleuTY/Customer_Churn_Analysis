@@ -52,4 +52,9 @@ git commit -m "Message"
 ```bash
 git push origin branch_name
 ```
-
+- Go to the repository on GitHub
+- Click on ``Compare & Pull Request`` option
+- Define the name and description of your Pull Request
+- Click on ``Create Pull Request``
+- Request for reviewers to review and approve your Pull Request
+- After approval, you can merge the code to ``main`` branch

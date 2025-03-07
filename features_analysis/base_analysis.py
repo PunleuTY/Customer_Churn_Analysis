@@ -19,8 +19,7 @@ class BaseAnalysis(ABC):
         try:
             df = pd.read_csv(self.data_path)
         except FileNotFoundError:
-            raise FileNotFoundError("Dataset not found.")
-            return
+            raise FileNotFoundError(f"Dataset not found at path {self.data_path}")
         else:
             return df
     

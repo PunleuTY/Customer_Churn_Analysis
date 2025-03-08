@@ -33,11 +33,13 @@ class UsageFrequencyAnalysis(BaseAnalysis):
         
     
     def categorize_usage_rate(self, usage_rate):
-        if 0.016 <= usage_rate <= 9.99:
+        if usage_rate < 0.016:
+            return "Inactive"
+        elif 0.016 <= usage_rate <= 9.99:
             return "Low"
         elif 9.99 < usage_rate <= 19.98:
             return "Medium"
-        elif usage_rate > 19.98:
+        else:
             return "Active"
         
     def churn_rate_by_group(self, df):

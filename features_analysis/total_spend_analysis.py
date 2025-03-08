@@ -24,5 +24,7 @@ class TotalSpendAnalysis(BaseAnalysis):
         plt.ylabel('Churn')
         plt.show()
 
-analysis = TotalSpendAnalysis("d:/year2/term2/python/Project/Customer_Churn_Analysis/data/data_500_rec.csv")
-analysis.perform_analysis()
+if __name__ == "__main__":
+    file_path = "d:/year2/term2/python/Project/Customer_Churn_Analysis/data/data_500_rec.csv"
+    analysis = TotalSpendAnalysis(file_path)
+    analysis.perform_analysis()

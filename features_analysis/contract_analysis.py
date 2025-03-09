@@ -4,13 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 class ContractAnalysis(BaseAnalysis):
-    def perform_analysis(self):
-        print(f"\n Contract Length Distribution : \n{self.contract_ditribution()}")
-        self.visual_contract_distribution()
-        print(f"\n Churn Rate by Contract Length :\n {self.contract_churn()}")
-        self.visual_contract_churn()
-
-        plt.show()
+    
 
     def contract_ditribution(self):
         return self.df["Contract Length"].value_counts()
@@ -21,7 +15,6 @@ class ContractAnalysis(BaseAnalysis):
         plt.title("Contract Length Distribution of Customers")
         plt.xlabel("Contract Length")
         plt.ylabel("Count")
-        plt.show()
     
     def contract_churn(self):
         return self.df.groupby("Contract Length")['Churn'].mean() * 100
@@ -34,6 +27,22 @@ class ContractAnalysis(BaseAnalysis):
         plt.ylabel("Churn Rate (%)")
         plt.ylim(0, 100)
         
+    # Function to display all the performance analysis
+    def perform_analysis(self):
+
+        # Dislay the contract length distribution 
+        print(f"\n Contract Length Distribution : \n{self.contract_ditribution()}")
+        
+        # Display a coutplot of contract length distribution
+        self.visual_contract_distribution()
+
+        # Display the churn rate which affect by Contract Length 
+        print(f"\n Churn Rate by Contract Length :\n {self.contract_churn()}")
+
+        # Display a barplot to show the contract length and churn rate
+        self.visual_contract_churn()
+
+        plt.show()
 
 if __name__ == "__main__":
     data_path = "../data/data_500_rec.csv"

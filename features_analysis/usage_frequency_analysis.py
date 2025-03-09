@@ -1,3 +1,4 @@
+# Improt Abstract Base Class
 from base_analysis import BaseAnalysis
 
 # Import Libraries
@@ -6,19 +7,21 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Usage frequency analysis class
 class UsageFrequencyAnalysis(BaseAnalysis):
-# Usage Rate
+    # Perform analysis method
     def perform_analysis(self):
+        # Load dataset
         df = self.load_data()
         
         # Calculate usage frequency average
         usage_frequency_average = df["Usage Frequency"].mean()
         print(f"Usage Frequency Average: {round(usage_frequency_average)} times.")
         
-        # Create usage rate and usage rate group
+        # Create usage rage group
         self.create_usage_rate_and_group(df)
         print("\nUsage Rate and Usage Rate Group: ")
-        print(df.head())
+        print(df[["Tenure", "Usage Frequency", "Usage Rate Group"]].head())
 
         # Churn rate by group
         usage_churn_rate = self.churn_rate_by_group(df)
@@ -27,39 +30,45 @@ class UsageFrequencyAnalysis(BaseAnalysis):
         # Usage Rate Visualization
         self.usage_rate_visualization(usage_churn_rate)
         
+    # Usage Rate group
     def create_usage_rate_and_group(self, df):
+        # Calculate usage rate in a period (Tenure)
         df["Usage Rate"] = df["Usage Frequency"] / df["Tenure"]
+        # Divide usage rate by group by apply function categorize_usage_rate
         df["Usage Rate Group"] = df["Usage Rate"].apply(self.categorize_usage_rate)
         
-    
+    # The usage rate in dataset is in range (0.016 - 30.0) so we need to group it 
+    # [0.016 - 9.99] : Low Usage, [9.99 - 19.98] : Medium Usage, [19.98 - 30.0] : Active Usage
     def categorize_usage_rate(self, usage_rate):
-        if usage_rate < 0.016:
-            return "Inactive"
-        elif 0.016 <= usage_rate <= 9.99:
+        if 0.016 <= usage_rate <= 9.99:
             return "Low"
         elif 9.99 < usage_rate <= 19.98:
             return "Medium"
-        else:
+        elif 19.98 < usage_rate <= 30.0:
             return "Active"
-        
+    
+    # Calculate churn rate by defined group        
     def churn_rate_by_group(self, df):
         return df.groupby("Usage Rate Group")["Churn"].mean() * 100
     
-
+    # Churn rate group visualization
     def usage_rate_visualization(self, usage_churn_rate):
-        # Plot churn rate by age group
-        plt.figure(figsize=(8, 5))
-        sns.barplot(x = usage_churn_rate.index, y = usage_churn_rate.values, palette = "coolwarm")
-        plt.title("Churn Rate by Usage Rate Group")
-        plt.ylabel("Churn Rate (%)")
-        plt.xlabel("Usage Rate Group")
-        plt.ylim(0, 100)
-
-        plt.show()
-            
+        # Define figure size of 8 inches by 5 inches
+        plt.figure(figsize = (8, 5))
+        # Create barplot using sns 
+            # x axis represent usage rate group index which are Low, Medium and Active
+            # y axis represent values of each usage rate group
+            # coolwarm as color pallete
+            # Set color status based on usage churn rate
+        sns.barplot(x = usage_churn_rate.index, y = usage_churn_rate.values, palette = "coolwarm", hue = usage_churn_rate.index)
+        plt.title("Churn Rate by Usage Rate Group") # Figure title
+        plt.ylabel("Churn Rate (%)") # label for y axis
+        plt.xlabel("Usage Rate Group") # label for x axis
+        plt.ylim(0, 100) # Set value range of y to (0 - 100)
+        plt.show() # Display the figure
     
-if __name__ == "__main__":
-    path = "data/data_500_rec.csv"
-    obj = UsageFrequencyAnalysis(path)
-    obj.perform_analysis()
+if __name__ == "__main__": # Testing in the module
+    path = "data/data_500_rec.csv"  # Dataset oath
+    usage_frequency_obj = UsageFrequencyAnalysis(path) # create usage freqeuncy analysis obj
+    usage_frequency_obj.perform_analysis()
     

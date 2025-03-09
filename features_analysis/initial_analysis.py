@@ -1,17 +1,20 @@
+# Import Abstract Base Class
 from base_analysis import BaseAnalysis
 
 # Import Libraries
 import pandas as pd
 
+# Initial Analysis Class
 class InitialAnalysis(BaseAnalysis):
+    # Initial Analysis Method
     def perform_analysis(self):
         # Load Data
         df = self.load_data()
         
         # Data columns and rows
         shape = df.shape
-        print(f"Rows: {shape[0]}")
-        print(f"Columns: {shape[1]}")
+        print(f"Rows: {shape[0]}") # Row of dataset
+        print(f"Columns: {shape[1]}") # Column of dataset
 
         
         # Inspect Data Head
@@ -37,7 +40,7 @@ class InitialAnalysis(BaseAnalysis):
         print(f"\nNull Values:\n {df.isnull().sum()}")
     
     
-if __name__ == "__main__":
+if __name__ == "__main__": # Testing in the module
     path = "data/data_500_rec.csv"
     initial_analysis_obj = InitialAnalysis(path)
     initial_analysis_obj.perform_analysis()

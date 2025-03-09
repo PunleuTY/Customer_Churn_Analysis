@@ -1,3 +1,4 @@
+# Import Base Class
 from base_analysis import BaseAnalysis
 
 # Import Libraries
@@ -5,47 +6,67 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Gender Analysis Class
 class GenderAnalysis(BaseAnalysis):
+    # Method to perform gender analysis
     def perform_analysis(self):
         # Load dataset
         df = self.load_data()
-        # Gender distribution
+        
+        # Count number of males and females
         gender_counts = df["Gender"].value_counts()
         print("Gender Count: ")
         print(f"Male: {gender_counts["Male"]}")
         print(f"Female: {gender_counts["Female"]}")
         
-        # Gender Distribution visualization
+        # Visualization number of males and females
         self.gender_count_visualization(df)
         
-        # Churn rate for each group
+        
+        # Calculate churn rate groupby gender
         gender_churn_rate = df.groupby("Gender")["Churn"].mean() * 100
         print("\nGender Churn Rate: ")
-        print(f"Male: {gender_churn_rate["Male"]:.2f}%")
-        print(f"Female: {gender_churn_rate["Female"]:.2f}%")
+        print(f"Male: {gender_churn_rate["Male"]:.2f}%")    # Display Male churn rate
+        print(f"Female: {gender_churn_rate["Female"]:.2f}%")    # Display Female churn rate
         
-        # Churn Rate visualization
+        # Churn rate visualization for each gender group
         self.gender_churn_rate_visualization(gender_churn_rate)
     
+    # Visualization method for number of males and females
     def gender_count_visualization(self, df):
+        # Create figure size of 6 inches by 4 inches
         plt.figure(figsize = (6, 4))
-        sns.countplot(x = "Gender", data = df, palette = "pastel", hue = "Churn")
-        plt.title("Gender Distribution of Customers")
-        plt.xlabel("Gender")
-        plt.ylabel("Count")
-        plt.show()
         
+        # Create a bar plot with seaborn library
+            # Specifying x axis as gender
+            # df as source of data
+            # pastel as color pattern
+            # hue specify the colored differently based on Churn status
+        sns.countplot(x = "Gender", data = df, palette = "pastel", hue = "Gender")
+        plt.title("Gender Distribution of Customers") # Title of figure
+        plt.xlabel("Gender") # Label for x axis
+        plt.ylabel("Count") # Label for y axis
+        plt.show() # Display the figure
+    
+    # Churn rate visualization
     def gender_churn_rate_visualization(self, gender_churn_rate):
-        # Plot Churn Rate by Gender
-        plt.figure(figsize=(8, 5))
+        # Create figure size of 8 inches by 5 inches
+        plt.figure(figsize = (8, 5))
+        
+        # Create a barplot
+            # x axis represent index of gender churn rate which is male and femlae
+            # y axis represent value of churn rate for male and female
+            # hue specify the figure will colored differently based on gender churn rate index
+            # coolwarm as color pallete
+            # Dispaly the legend
         sns.barplot(x = gender_churn_rate.index, y = gender_churn_rate.values, hue = gender_churn_rate.index , palette = "coolwarm", legend = True)
-        plt.title("Churn Rate by Tenure Group")
-        plt.ylabel("Churn Rate (%)")
-        plt.xlabel("Tenure Group")
-        plt.ylim(0, 100)
-        plt.show()
+        plt.title("Churn Rate by Tenure Group") # Title of figure
+        plt.ylabel("Churn Rate (%)") # Label for y axis
+        plt.xlabel("Gender Group") # Label 
+        plt.ylim(0, 100) # Set value range for y from 0 to 100 (0% to 100%)
+        plt.show() # Dispaly figure
 
-if __name__ == "__main__":
-    path = "data/data_500_rec.csv"
-    gender_analysis = GenderAnalysis(path)
-    gender_analysis.perform_analysis()
+if __name__ == "__main__": # Testing in module
+    path = "data/data_500_rec.csv" # Path to dataset
+    gender_analysis = GenderAnalysis(path)  # Create Gender analysis object
+    gender_analysis.perform_analysis() # Call perform analysis method

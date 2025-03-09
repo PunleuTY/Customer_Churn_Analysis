@@ -1,8 +1,11 @@
 from base_analysis import BaseAnalysis
+
+# Import Libraries
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# Feature Class
 class CorrelationAnalysis(BaseAnalysis):
     def __init__(self, data_path):
         super().__init__(data_path)

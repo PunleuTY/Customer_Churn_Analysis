@@ -1,11 +1,8 @@
 from base_analysis import BaseAnalysis
-
-# Import Libraries
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Feature Class
 class CorrelationAnalysis(BaseAnalysis):
     def __init__(self, data_path):
         super().__init__(data_path)
@@ -13,10 +10,7 @@ class CorrelationAnalysis(BaseAnalysis):
     def perform_analysis(self):
         df = self.load_data()
 
-        df['Gender'] = df['Gender'].factorize()[0]
-        df['Subscription Type'] = df['Subscription Type'].factorize()[0]
-
-        features = ['Age','Gender','Tenure','Usage Frequency','Support Calls','Payment Delay','Subscription Type','Total Spend','Last Interaction']
+        features = ['Age','Tenure','Usage Frequency','Support Calls','Payment Delay','Total Spend','Last Interaction']
         correlation_matrix = df[features].corr()
 
         print(correlation_matrix)

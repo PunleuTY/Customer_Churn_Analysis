@@ -12,7 +12,7 @@ class ContractAnalysis(BaseAnalysis):
     # Function to display contract length distribution as countplot
     def visual_contract_distribution(self):
         plt.figure(figsize = (6,4))
-        sns.countplot(x = "Contract Length", data = self.df, palette = "coolwarm", order = self.df['Contract Length'].value_counts().index )
+        sns.countplot(x = "Contract Length", data = self.df, palette = "coolwarm", order = self.df['Contract Length'].value_counts().index, hue = "Contract Length")
         plt.title("Contract Length Distribution of Customers")
         plt.xlabel("Contract Length")
         plt.ylabel("Count")
@@ -23,8 +23,8 @@ class ContractAnalysis(BaseAnalysis):
     
     # Function to display the contract length and churn rate as a barplot
     def visual_contract_churn(self):
-        plt.figure(figsize=(6,4))
-        sns.barplot(x=self.contract_churn().index, y = self.contract_churn().values,palette="coolwarm")
+        plt.figure(figsize = (6,4))
+        sns.barplot(x = self.contract_churn().index, y = self.contract_churn().values, palette = "coolwarm", hue = self.contract_churn().index)
         plt.title("Churn Rate by Contract Length")
         plt.xlabel("Contract Length")
         plt.ylabel("Churn Rate (%)")

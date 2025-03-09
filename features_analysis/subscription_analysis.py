@@ -12,7 +12,7 @@ class SubscriptionAnalysis(BaseAnalysis):
     # Function to display the subscription type distribution as a countplot
     def visual_subscription_distribution(self):
         plt.figure(figsize = (6,4))
-        sns.countplot(x = "Subscription Type", data = self.df, palette = "coolwarm", order = self.df['Subscription Type'].value_counts().index )
+        sns.countplot(x = "Subscription Type", data = self.df, palette = "coolwarm", hue = "Subscription Type", order = self.df['Subscription Type'].value_counts().index )
         plt.title("Subscription Type Distribution of Customers")
         plt.xlabel("Subscription Type")
         plt.ylabel("Count")
@@ -24,8 +24,8 @@ class SubscriptionAnalysis(BaseAnalysis):
     
     # Function to display churn rate which affected by subscription type as a barplot
     def visual_subscription_churn(self):
-        plt.figure(figsize=(6,4))
-        sns.barplot(x=self.subscription_churn().index, y = self.subscription_churn().values,palette="coolwarm")
+        plt.figure(figsize = (6,4))
+        sns.barplot(x = self.subscription_churn().index, y = self.subscription_churn().values, hue = self.subscription_churn().index, palette = "coolwarm")
         plt.title("Churn Rate by Subscription Type")
         plt.xlabel("Subscription Type")
         plt.ylabel("Churn Rate (%)")

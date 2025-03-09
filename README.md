@@ -50,11 +50,8 @@ pip install -r requirements.txt
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) <br><br>
 
 - Python Libraries<br>
-![Matplotlib](https://img.shields.io/static/v1?label=Matplotlib&message=Visualization&color=11557C&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>)<br>
-
-	![Pandas](https://img.shields.io/static/v1?label=Pandas&message=Data%20Analysis&color=150458&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>)<br>
-	
-	![Seaborn](https://img.shields.io/static/v1?label=Seaborn&message=Data%20Visualization&color=0696D7&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>)
+![Matplotlib](https://img.shields.io/static/v1?label=Matplotlib&message=Visualization&color=11557C&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>) ![Pandas](https://img.shields.io/static/v1?label=Pandas&message=Data%20Analysis&color=150458&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>)
+![Seaborn](https://img.shields.io/static/v1?label=Seaborn&message=Data%20Visualization&color=0696D7&style=for-the-badge&logo=data:image/png;base64,<BASE64_ENCODED_IMAGE>)
 
 ## GitHub Link
 - [GitHub Repo](https://github.com/Leangchhay1523/Customer_Churn_Analysis)

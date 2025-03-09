@@ -5,19 +5,32 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 class AgeAnalysis(BaseAnalysis):
     def perform_analysis(self):
-        print(f"\n Age Distribution: \n {self.age_distribution()}")
+        print("Running Age Distribution Visualization : ")
         self.visual_age_distribution()
-        print(f"\nChurn Rate by Age  : \n {self.age_churn()}")
+
+        print("Running Churn Rate by Age :")
         self.visual_age_churn()
-        
+
+        # Categorizing age groups
+        self.categorize_age_groups()
+        print("\nChurn Rate by Age Group:\n", self.df.groupby("Age Group")["Churn"].mean() * 100)
+        self.visual_age_churn_by_group()
+    
         plt.show()
-    def age_categorize(self, age):
-        if age >= 18 and age <= 30:
-            return "Young"
-        elif age >= 31 and age <= 50:
-            return "Middle-aged"
-        elif age >= 51 and age <= 65:
-            return "Older"
+
+    def categorize_age_groups(self):
+        bins = [18, 30, 50, 65]  # Define the age group ranges
+        labels = ["Young", "Middle-aged", "Older"]
+        self.df["Age Group"] = pd.cut(self.df["Age"], bins=bins, labels=labels, right=True)
+
+    def visual_age_churn_by_group(self):
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x='Age Group', y='Churn', data=self.df, estimator=lambda x: np.mean(x) * 100, palette="coolwarm")
+        plt.title("Churn Rate by Age Group")
+        plt.xlabel("Age Group")
+        plt.ylabel("Churn Rate (%)")
+        plt.show()
+
         
     def age_distribution(self):
         return self.df["Age"].value_counts()

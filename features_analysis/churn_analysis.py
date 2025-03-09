@@ -1,7 +1,7 @@
 from base_analysis import BaseAnalysis
+
 import pandas as pd
 import matplotlib.pyplot as plt
-
 
 class ChurnAnalysis(BaseAnalysis):
     def __init__(self, data_path):

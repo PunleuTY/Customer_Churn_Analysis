@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 class BaseAnalysis(ABC):
     def __init__(self, data_path):
         self.data_path = data_path
-    
+        self.df = self.load_data()
     def load_data(self):
         try:
             df = pd.read_csv(self.data_path)

@@ -1,7 +1,5 @@
+# Ignore pycache folder
 __pycache__/
-*.ipynb
-Finalize/
-main.ipynb
-main.ipynb
-*.ipynb
-main.ipynb
+
+# Ignore tempCodeRunnerFile
+**/tempCodeRunnerFile.py

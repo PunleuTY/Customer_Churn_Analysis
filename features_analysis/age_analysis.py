@@ -29,7 +29,6 @@ class AgeAnalysis(BaseAnalysis):
         plt.title("Churn Rate by Age Group")
         plt.xlabel("Age Group")
         plt.ylabel("Churn Rate (%)")
-        plt.show()
 
         
     def age_distribution(self):
@@ -41,7 +40,6 @@ class AgeAnalysis(BaseAnalysis):
         plt.title("Age Distribution of Customers")
         plt.xlabel("Age")
         plt.ylabel("Frequency")
-        plt.show()
 
     def age_churn(self):
         result = self.df.groupby("Age")["Churn"].mean() * 100

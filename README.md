@@ -8,8 +8,10 @@
 ```plaintext
 Customer_Churn_Analysis/
 ├── data/
-│   └── data_500_rec.csv                   # Dataset 500 records
-├── feature_analysis/
+│   ├── data_500_rec.csv                   # Dataset 500 records
+│   └── data_1000_rec.csv				   # Dataset 1000 records
+├── public/								   # Store assets
+├── src/
 │   ├── __init__.py                        # Making feature_analysis a package
 │   ├── age_analysis.py                    # Age Analysis Feature
 │   ├── base_analysis.py                   # Feature Analysis Abstract Base Class
@@ -43,6 +45,7 @@ pip install -r requirements.txt
 3. Install ``Jupyter`` notebook extension on VSCode
 	- Open VSCode
 	- Go to **Extensions** and search **Jupyter**
+<img src = "public/jupyter_extension.png">
 	- Install it
 4. Run the project on ``main.ipynb``
 ### Tools and Dependencies

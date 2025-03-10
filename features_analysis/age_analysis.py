@@ -15,7 +15,7 @@ class AgeAnalysis(BaseAnalysis):
     # This is the visualization function of churn rate which affected by age groups using matplotlib & seaborn to create barplot
     def visual_age_churn_by_group(self):
         plt.figure(figsize=(8, 5))
-        sns.barplot(x='Age Group', y='Churn', data=self.df, estimator=lambda x: np.mean(x) * 100, palette="coolwarm")
+        sns.barplot(x = 'Age Group', y = 'Churn', data = self.df, estimator = lambda x: np.mean(x) * 100, palette = "coolwarm", hue = "Age Group")
         plt.title("Churn Rate by Age Group")
         plt.xlabel("Age Group")
         plt.ylabel("Churn Rate (%)")
@@ -40,8 +40,8 @@ class AgeAnalysis(BaseAnalysis):
     
     # Function to visual the age and churn rateas a boxplot
     def visual_age_churn(self):
-        plt.figure(figsize=(8, 5))
-        sns.boxplot(x='Churn', y='Age', data=self.df, palette="coolwarm")
+        plt.figure(figsize = (8, 5))
+        sns.boxplot(x = 'Churn', y = 'Age', data = self.df, palette = "coolwarm", hue = "Churn")
         plt.title("Age vs. Churn Rate")
         plt.xlabel("Churn (0 = No, 1 = Yes)")
         plt.ylabel("Age")

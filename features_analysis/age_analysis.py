@@ -8,7 +8,7 @@ class AgeAnalysis(BaseAnalysis):
     # Since our dataset contains range of age between 18 - 65 so we need to categorize and initial label of them.
     # Bellow - [18-->30] : Young, [30-->50]: Middle-aged, [50-->65] : Olders
     def categorize_age_groups(self):
-        bins = [18, 30, 50, 65]  # Define the age group ranges
+        bins = [17, 30, 50, 65]  # Define the age group ranges
         labels = ["Young", "Middle-aged", "Older"]
         self.df["Age Group"] = pd.cut(self.df["Age"], bins=bins, labels=labels, right=True)
 
@@ -26,8 +26,8 @@ class AgeAnalysis(BaseAnalysis):
     
     # Function to visual the distribution of age frequency uses by using plt and syn libary to create hisplot
     def visual_age_distribution(self):
-        plt.figure(figsize=(8, 5))
-        sns.histplot(self.df['Age'], bins=20, kde=True, color="blue")
+        plt.figure(figsize = (8, 5))
+        sns.histplot(self.df['Age'], bins = 20, kde = True, color = "blue")
         plt.title("Age Distribution of Customers")
         plt.xlabel("Age")
         plt.ylabel("Frequency")

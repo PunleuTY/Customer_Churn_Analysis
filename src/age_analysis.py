@@ -1,8 +1,11 @@
+# Import Abstract Base Class
 from base_analysis import BaseAnalysis
+
+# Import Libraries
 import pandas as pd
-import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 class AgeAnalysis(BaseAnalysis):
 
     # Since our dataset contains range of age between 18 - 65 so we need to categorize and initial label of them.

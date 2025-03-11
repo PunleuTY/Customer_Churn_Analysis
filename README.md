@@ -55,7 +55,7 @@ Customer_Churn_Analysis/
 ├── data/
 │   ├── data_500_rec.csv                   # Dataset 500 records
 │   └── data_1000_rec.csv	           # Dataset 1000 records
-├── public/			           # Store assets
+├── public/				   # Store assets
 ├── src/
 │   ├── __init__.py                        # Making feature_analysis a package
 │   ├── age_analysis.py                    # Age Analysis Feature

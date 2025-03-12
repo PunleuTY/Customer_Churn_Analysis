@@ -3,6 +3,7 @@ from base_analysis import BaseAnalysis
 
 # Import Libraries
 import pandas as pd
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -71,6 +72,6 @@ class AgeAnalysis(BaseAnalysis):
 
 # Driver's code
 if __name__ == "__main__":
-    data_path = "../data/data_500_rec.csv"
+    data_path = "data/data_500_rec.csv"
     age_analysis = AgeAnalysis(data_path)
     age_analysis.perform_analysis()

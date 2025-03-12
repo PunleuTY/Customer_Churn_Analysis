@@ -26,6 +26,9 @@ class InitialAnalysis(BaseAnalysis):
         # Inspect Dataset Columns
         print(f"\nDataset Columns: {list(df.columns)}")
         
+        # Drop CustomerID column
+        df = df.drop(columns = "CustomerID")
+        
         # Datatype
         # print(f"\nData Types:\n {df.dtypes}")
         
@@ -33,13 +36,12 @@ class InitialAnalysis(BaseAnalysis):
         print("\nData Info:")
         print(df.info())
         
+        # Find Null Values
+        print(f"\nNull Values:\n {df.isna().sum()}")
+        
         # Statistic Summarize of Nnumeric Data
         print(f"\nStatistical Summarize:\n {df.describe().T}")
         
-        # Find Null Values
-        print(f"\nNull Values:\n {df.isnull().sum()}")
-    
-    
 if __name__ == "__main__": # Testing in the module
     path = "data/data_500_rec.csv"
     initial_analysis_obj = InitialAnalysis(path)
